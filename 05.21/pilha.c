@@ -1,7 +1,3 @@
-# include <stddef.h>
-#include <stdio.h>
-#include <stdlib.h>
-
 typedef struct celula {
     int numero;
     struct celula* proximo; // anterior (n - 1)   
@@ -26,8 +22,6 @@ int tamanho_pilha(pilha *p) {
 }
 
 void empilhar(pilha *p) {
-    printf("%d", pilha_vazia(p));
-
     celula *atual = (celula*) malloc(sizeof(celula));
 
     if(pilha_vazia(p)) {
@@ -35,10 +29,7 @@ void empilhar(pilha *p) {
         atual->proximo = NULL;
     }     
     else {
-       
-       
-        printf("%d", p->topo->numero);
-        atual->numero = p->topo->numero++;
+        atual->numero = p->topo->numero + 1;
         atual->proximo = p->topo;
         p->topo = atual;
     }
@@ -57,7 +48,6 @@ void desempilhar(pilha *p) {
 }
 
 int main() {
-    printf("Main");
     pilha p;
     celula c;
 
@@ -89,7 +79,6 @@ int main() {
         if(atual == NULL)
             printf("Desempilhamento concluido!");
         
-            atual = atual->proximo;
+        atual = atual->proximo;
     }
-
 }
