@@ -1,6 +1,5 @@
 typedef struct celula {
     int codigo, idade;
-    char nome[20];
     struct celula *prox; // Aponta pra proxima celula
 } celula;
 
