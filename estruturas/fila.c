@@ -1,6 +1,5 @@
 typedef struct celula {
     int id;
-    char nome[100];
     struct celula *proximo;
 } celula;
 
@@ -22,7 +21,6 @@ void enfileirar(struct fila *f, char nome[]) {
     celula *atual = (celula *) malloc(sizeof(celula));
 
     atual->id = (fila_vazia(f)) ? 1 : f->ultimo->id + 1;
-    strcpy(atual->nome, nome);
     atual->proximo = NULL;
     
     if(fila_vazia(f)) {
@@ -61,7 +59,6 @@ void imprimir_fila(struct fila *f) {
     celula *atual = f->primeiro;
     while (atual != NULL) {
         printf("ID: %d\n", atual->id);
-        printf("Nome: %s\n", atual->nome);
 
         atual = atual->proximo;
     }
@@ -70,45 +67,14 @@ void imprimir_fila(struct fila *f) {
 int main() {
     struct fila fila;
     struct celula celula;
-    int opcao = 0; 
-    char a;
     
     inicializar_fila(&fila);
-
-    printf("TERMINAL PRINCIPAL\n");
-
-    while(opcao != 4) {
-        printf("\n1 - enfileirar\n");
-        printf("2 - desenfileirar\n");
-        printf("3 - mostrar fila\n");
-        printf("4 - sair\n");
-
-        printf("Insira a opcao desejada: ");
-        scanf("%d", &opcao);
-        scanf("%c", &a); // GAMBIARRA
-
-        switch(opcao) {
-            case 1:
-                char nome[100];
-
-                printf("Nome: ");
-                fgets(nome, sizeof(nome), stdin);
-                printf("%s", nome);
                 
-                enfileirar(&fila, nome);
-                break;
-            case 2:
-                desenfileirar(&fila);
-                break;
-            case 3:
-                imprimir_fila(&fila);
-                break;
-            case 4:
-                printf("Saindo...\n");
-                break;
-            default:
-            printf("Opcao invalida!\n");
-                break;
-        }
-    }
+    enfileirar(&fila);
+    enfileirar(&fila);
+    enfileirar(&fila);
+    imprimir_fila(&fila);
+    
+    desenfileirar(&fila);
+    imprimir_fila(&fila);
 }
