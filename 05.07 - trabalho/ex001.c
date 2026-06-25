@@ -1,83 +1,73 @@
-typedef struct person{
-    int id;
-    char name[20];
-    int age;
-    struct person *next;
-} person;
+typedef struct celula
+{
+    int numero;
+    struct celula *proximo;
+} celula;
 
-typedef struct list{
-    struct person *first;
-    struct person *last;
-} list;
+typedef struct lista
+{
+    struct celula *primeira;
+    struct celula *ultima;
+} lista;
 
-void create_list(list *list_fl) {
-    list_fl->first = NULL;
-    list_fl->last = NULL;
+void criar_lista(lista *l)
+{
+    l->primeira = NULL;
+    l->ultima = NULL;
 }
 
-int is_empty(list *list_fl) {
-    return list_fl->first == NULL;
+int esta_vazia(lista *l)
+{
+    return l->primeira == NULL;
 }
 
-void register_user(list *list_fl, person u) {
-    person *newGuy = (person*) malloc(sizeof(person));
-    // Não lembro porque colocar ponteiro novamente
-    *newGuy = u;
-    newGuy->next = NULL;
+void adicionar_celula_fim(lista *l)
+{
+    int quantidade;
+    printf("Quantas celulas serao adicionadas? ");
+    scanf("%d", &quantidade);
 
-    if(isEmpty(list_fl)) {
-        list_fl->first = newGuy;
-        list_fl->last = newGuy;
+    for (int i = 0; i < quantidade; i++)
+    {
+        celula *nova_celula = (celula *)malloc(sizeof(celula));
+
+        printf("Digite o numero da celula: ");
+        scanf("%d", &nova_celula->numero);
+        nova_celula->proximo = NULL;
+
+        if (esta_vazia(l))
+        {
+            l->primeira = nova_celula;
+            l->ultima = nova_celula;
+        }
+        else
+        {
+            l->ultima->proximo = nova_celula;
+            l->ultima = nova_celula;
+        }
     }
-    else {
-        list_fl->last->next = newGuy;
-        list_fl->last = newGuy;
+}
+
+int contar_celulas(lista *l)
+{
+    celula *atual = l->primeira;
+    int contador = 0;
+
+    while (atual != NULL)
+    {
+        contador++;
+        atual = atual->proximo;
     }
+    return contador;
 }
 
-int count_users(list *list_fl) {
-    int counter = 0;
+int main()
+{
+    celula c1;
+    lista l1;
 
-    if(is_empty(list_fl))
-        return 0;
+    criar_lista(&l1);
+    adicionar_celula_fim(&l1);
 
-    struct person *current_user;
-    current_user = list_fl->first;
-
-    // Count users
-    while(current_user != NULL) {
-        counter++;
-        current_user = current_user->next;
-    } 
-
-    return counter;
-}
-
-void initialize(list *list_fl) {
-    person addUser;
-   
-    addUser.id = 1;
-    strcpy(addUser.name, "Josimar");
-    addUser.age = 37;
-    insert_user(addUser, list_fl);
-   
-    addUser.id = 2;
-    strcpy(addUser.name, "Ademar");
-    addUser.age = 64;
-    insert_user(addUser, list_fl);
-   
-    addUser.id = 3;
-    strcpy(addUser.name, "Jose");
-    addUser.age = 67;
-    insert_user(addUser, list_fl);
-}
-
-int main() {
-    struct list list_fl;
-
-    create_list(&list_fl);
-    initialize(&list_fl);
-    count_users(&list_fl);
-
-    printf("%d usuarios cadastrados.", count_users(&list_fl));
+    printf("Quantidade de celulas na lista: %d\n", contar_celulas(&l1));
 }

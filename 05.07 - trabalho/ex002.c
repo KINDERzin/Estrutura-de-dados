@@ -1,68 +1,85 @@
-typedef struct person{
-    int id;
-    char name[20];
-    int age;
-    struct person *next;
-} person;
+typedef struct celula
+{
+   int numero;
+   struct celula *proximo;
+} celula;
 
-typedef struct list{
-    struct person *first;
-    struct person *last;
-} list;
+typedef struct lista
+{
+   struct celula *primeira;
+   struct celula *ultima;
+} lista;
 
-void create_list(list *list_fl) {
-    list_fl->first = NULL;
-    list_fl->last = NULL;
+void criar_lista(lista *l)
+{
+   l->primeira = NULL;
+   l->ultima = NULL;
 }
 
-int is_empty(list *list_fl) {
-    return list_fl->first == NULL;
+int esta_vazia(lista *l)
+{
+   return l->primeira == NULL;
 }
 
-void register_user(list *list_fl) {
-    struct person *user = (person*) malloc(sizeof(person));
+void adicionar_celula_fim(lista *l)
+{
+   int quantidade;
+   printf("Quantas celulas serao adicionadas? ");
+   scanf("%d", &quantidade);
 
-    printf("Name: ");
-    scanf("%s", user->name);
-    printf("Age: ");
-    scanf("%d", user->age);
-    printf("Id: ");
-    scanf("%d", user->age);
+   for (int i = 0; i < quantidade; i++)
+   {
+      celula *nova_celula = (celula *)malloc(sizeof(celula));
 
-    if(is_empty(list_fl)) {
-        list_fl->first = user;
-        list_fl->last = user;
-    }
-    else {
-        list_fl->last->next = user;
-        list_fl->last = user;
-        user->next = NULL;
-    }
+      printf("Digite o numero da celula: ");
+      scanf("%d", &nova_celula->numero);
+      nova_celula->proximo = NULL;
+
+      if (esta_vazia(l))
+      {
+         l->primeira = nova_celula;
+         l->ultima = nova_celula;
+      }
+      else
+      {
+         l->ultima->proximo = nova_celula;
+         l->ultima = nova_celula;
+      }
+   }
 }
 
-struct list* copy_list(list *list_fl) {
-    list *newList;
-    struct person *current_user;
-    current_user = list_fl->first;
-    if(is_empty(list_fl)) 
-        newList->first = NULL;
-        newList->last = NULL;
+struct lista *copia_lista(lista *l1)
+{
+   lista *nova_lista;
+   celula *atual = l1->primeira;
 
-    while(current_user != NULL)
-        newList->first = current_user;
-        current_user = current_user->next;
-    }
+   while (atual != NULL)
+   {
+      atual->numero++;
 
-    return &newList;
+      if (esta_vazia(nova_lista))
+      {
+         nova_lista->primeira = atual;
+         nova_lista->ultima = atual;
+      }
+      else
+         nova_lista->ultima = atual;
 
-int main() {
-    struct person people;
-    struct list list_fl;
-    struct list second_list;
+      atual = atual->proximo;
+   }
 
-    create_list(&list_fl);
-    create_list(&second_list);
+   return nova_lista;
+}
 
-    initalize(&list_fl);
-    sum_ids(&list_fl);
+int main()
+{
+   celula c1;
+   lista l1;
+   lista *l2;
+
+   criar_lista(&l1);
+   adicionar_celula_fim(&l1);
+
+   criar_lista(&l2);
+   l2 = copia_lista(&l1);
 }
