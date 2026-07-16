@@ -4,18 +4,32 @@ typedef struct pessoa {
     struct pessoa *proximo;
 } pessoa;
 
-typedef struct fila{
+typedef struct fila {
     struct pessoa *primeiro;
     struct pessoa *ultimo;
 } fila; 
+
+typedef struct pilha {
+    int quantidade;
+    struct pessoa *topo;
+} pilha;
 
 void inicializar_fila(struct fila *f) {
     f->primeiro = NULL;
     f->ultimo   = NULL;
 }
 
+void inicializar_pilha(struct pilha *p) {
+    p->quantidade = 0;
+    p->topo = NULL;
+}
+
 int fila_vazia(struct fila *f) {
     return (f->primeiro == NULL && f->ultimo == NULL);
+}
+
+int pilha_vazia(struct pilha *p) {
+    return p->quantidade == 0 && p->topo == NULL;
 }
 
 void enfileirar(struct fila *f, char nome[], int idade) {
@@ -34,6 +48,12 @@ void enfileirar(struct fila *f, char nome[], int idade) {
         f->ultimo = atual;
 }
 
+void empilhar(struct pilha *p, struct pessoa *atual) {
+    atual->proximo = p->topo;
+    p->topo = atual;
+    p->quantidade++;
+}
+
 void desenfileirar(struct fila *f) {
     if(fila_vazia(f)) {
         printf("Fila vazia!\n");
@@ -43,11 +63,12 @@ void desenfileirar(struct fila *f) {
     pessoa *atual = f->primeiro;
 
     if(f->primeiro == f->ultimo) {
-        f->primeiro = atual->proximo;
         inicializar_fila(f);
+        free(atual);
+        return;
     }
+
     f->primeiro = atual->proximo;
-    
     free(atual);
 }
 
@@ -66,43 +87,48 @@ void imprimir_fila(struct fila *f) {
     }
 }
 
-void ordenar_fila(struct fila *f1, struct fila *f_p) {
-    struct pessoa *p_f1 = f1->primeiro;
-    struct pessoa *auxiliar = f1->primeiro;
+void imprimir_pilha(struct pilha *p) {
+    if(pilha_vazia(p)) {
+        printf("Pilha vazia!\n");
+        return;
+    }    
 
-    while(p_f1 != f1->ultimo) {
-        if(p_f1->idade >= 70) {
-            if(auxiliar == p_f1)
-                auxiliar = NULL;
+    pessoa *atual = p->topo;
+    while(atual != NULL) {
+        printf("Nome: %s\n", atual->nome);
+        atual = atual->proximo;
+    }
+}
+
+void ordenar_fila(struct fila *f, struct pilha *p) {
+    struct pessoa *atual = f->primeiro;
+    struct pessoa *auxiliar = NULL;
+    struct pessoa *prox;
+
+    while(atual != NULL) {
+        prox = atual->proximo;
+
+        if(atual->idade <= 70) {
+            if(atual == f->primeiro)
+                f->primeiro = atual->proximo;
             else
-                while(auxiliar->proximo != p_f1) {
-                    auxiliar = auxiliar->proximo;
-                }
+                auxiliar->proximo = atual->proximo;
 
-            if(fila_vazia(f_p)) {
-                f_p->primeiro = p_f1;
-                f_p->ultimo   = p_f1;
-                if(auxiliar == NULL) {
-                    f1->primeiro = p_f1->proximo;
-                }
-                else
-                    auxiliar->proximo = p_f1->proximo;
-            }
-            else {
-                f_p->ultimo = p_f1;
-                auxiliar->proximo = p_f1->proximo;
-                p_f1->proximo = NULL;
-            }
+            if(atual == f->ultimo)
+                f->ultimo = auxiliar;
+
+            empilhar(p, atual);
         }
+        else
+            auxiliar = atual;
 
-        p_f1 = p_f1->proximo;
+        atual = prox;
     }
 }
 
 int main() {
     struct fila fila;
-    struct fila fila_p;
-    struct pessoa pessoa;
+    struct pilha prioridade;
     
     int opcao;
     char gambiarra;
@@ -110,7 +136,7 @@ int main() {
     int idade;
 
     inicializar_fila(&fila);
-    inicializar_fila(&fila_p);
+    inicializar_pilha(&prioridade);
 
     do {
         printf("\n=== TERMINAL PRINCIPAL ===\n\n");
@@ -127,6 +153,7 @@ int main() {
             case 1:
                 printf("Nome: ");
                 fgets(nome, sizeof(nome), stdin);
+                nome[strcspn(nome, "\n")] = '\0';
                 printf("Idade: ");
                 scanf("%d", &idade);
 
@@ -135,7 +162,7 @@ int main() {
                 
             case 2:
                 printf("\n=== PRIORIDADE ===\n");
-                imprimir_fila(&fila_p);
+                imprimir_pilha(&prioridade);
                 
                 printf("\n=== FILA ===\n");
                 imprimir_fila(&fila);
@@ -147,11 +174,13 @@ int main() {
                     break;
                 }    
                 
-                ordenar_fila(&fila, &fila_p);
+                ordenar_fila(&fila, &prioridade);
                 break;
             case 0: 
                 printf("Saindo...");
                 break;
         }
     } while(opcao != 0);
+
+    return 0;
 }

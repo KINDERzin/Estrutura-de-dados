@@ -143,7 +143,8 @@ int main() {
     char nome[100];
     int idade;
     
-    inicializar_fila(&fila);
+    inicializar_fila(&fila_um);
+    inicializar_fila(&fila_dois);
 
     while(opcao != 'e') {
         printf("\n=== TERMINAL PRINCIPAL ===\n"); 
@@ -160,7 +161,7 @@ int main() {
 
         switch(opcao) {
             case 'a':
-                
+                printf("\n=== FILA 1 === \n");
                 printf("Nome: ");
                 fgets(nome, sizeof(nome), stdin);
                 printf("Idade: ");
@@ -169,8 +170,9 @@ int main() {
                 
                 enfileirar(&fila_um, nome, idade);
                 break;
+
             case 'b':
-                
+                printf("\n=== FILA 2 === \n");
                 printf("Nome: ");
                 fgets(nome, sizeof(nome), stdin);
                 printf("Idade: ");
@@ -179,37 +181,40 @@ int main() {
                 
                 enfileirar(&fila_dois, nome, idade);
                 break;
+
             case 'c':
-                if(fila_vazia(&fila)) {
+                if(fila_vazia(&fila_um)) {
                     printf("Sem clientes na fila!\n");
                     break;
                 }
                 printf("\n=== CAIXA 1 ===\n");
-                printf("Cliente: %s\n\n", fila.primeiro->nome);
-                printf("Idade: %d\n", fila.primeiro->idade);
+                printf("Cliente: %s\n\n", fila_um.primeiro->nome);
+                printf("Idade: %d\n", fila_um.primeiro->idade);
                 
-                desenfileirar(&fila);
+                desenfileirar(&fila_um);
                 break;
                 
             case 'd':
-                if(fila_vazia(&fila)) {
+                if(fila_vazia(&fila_dois)) {
                     printf("Sem clientes na fila!\n");
                     break;
                 }
                 printf("\n=== CAIXA 2 ===\n");
-                printf("Cliente: %s\n", fila.primeiro->nome);
-                printf("Idade: %d\n", fila.primeiro->idade);
+                printf("Cliente: %s\n", fila_dois.primeiro->nome);
+                printf("Idade: %d\n", fila_dois.primeiro->idade);
                 
-                desenfileirar(&fila);
+                desenfileirar(&fila_dois);
                 break;
 
             case 'e':
-                if(fila_vazia(&fila)) {
-                    printf("Sem clientes na fila!\n");
+                if(fila_vazia(&fila_um) && fila_vazia(&fila_dois)) {
+                    printf("Sem clientes na fila de espera!\n");
                     break;
                 }    
                 printf("\n=== Clientes ===\n");
-                imprimir_fila(&fila);
+                imprimir_fila(&fila_um);
+                imprimir_fila(&fila_dois);
+                
                 break;
                 
             case 'f':

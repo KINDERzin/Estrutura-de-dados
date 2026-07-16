@@ -114,6 +114,7 @@ int main() {
         printf("1 - Enfileirar (fila 1)\n");
         printf("2 - Enfileirar (fila 2)\n");
         printf("3 - Comparar filas\n");
+        printf("4 - Mostrar filas\n");
         printf("0 - Sair\n");
         
         printf("Insira a opcao desejada: ");
@@ -145,6 +146,21 @@ int main() {
                     printf("As filas são iguais");
                 else
                     printf("As filas não são iguais");
+                break;
+
+            case 4:
+                printf("\n=== FILA 1 ===\n");
+                if(fila_vazia(&fila1))
+                    printf("Fila vazia!\n");
+                else
+                    imprimir_fila(&fila1);
+                    
+                printf("\n=== FILA 2 ===\n");
+                if(fila_vazia(&fila2))
+                    printf("Fila vazia!\n");
+                else
+                    imprimir_fila(&fila2);
+
                 break;
 
             case 0: 
