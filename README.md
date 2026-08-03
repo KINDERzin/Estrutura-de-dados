@@ -1,1 +1,66 @@
-# Estrutura-de-dados
+# 📘 Estrutura de Dados
+
+> Repositório de acompanhamento semanal da disciplina de **Estrutura de Dados** — Ciência da Computação (UNESPAR, Apucarana/PR).
+
+![Última atualização](https://img.shields.io/badge/última%20atualização-07.02-blue)
+![Linguagem](https://img.shields.io/badge/linguagem-C-informational)
+
+## 🔄 Sobre este repositório
+
+Este repositório é atualizado **semanalmente** com o conteúdo, exercícios e trabalhos vistos em aula. A ideia é manter um histórico organizado da evolução ao longo do semestre.
+
+## 🗓️ Log semanal
+
+| Data | Aula / Conteúdo | Status |
+|------|------------------|--------|
+| [03.12](./03.12) | Introdução / aula do dia | ✅ |
+| [04.16](./04.16) | Aula do dia | ✅ |
+| [04.23](./04.23) | Aula do dia | ✅ |
+| [05.07 - trabalho](./05.07%20-%20trabalho) | Trabalho avaliativo | ✅ |
+| [05.21](./05.21) | Aula do dia | ✅ |
+| [05.28](./05.28) | Aula do dia | ✅ |
+| [06.18](./06.18) | Aula do dia | ✅ |
+| [06.25](./06.25) | Exercícios corrigidos | ✅ |
+| [07.02](./07.02) | Exercícios corrigidos | ✅ |
+| `mm.dd` | *(próxima aula)* | 🔜 |
+
+> 💡 Toda semana: cria a pasta com a data (`mm.dd`), adiciona o código e inclui uma linha nova nessa tabela.
+
+## ✅ Tópicos cobertos até aqui
+
+- [x] Listas encadeadas
+- [x] Pilhas
+- [x] Filas
+- [ ] Árvores binárias
+- [ ] Árvores AVL
+- [ ] Grafos
+- [ ] Algoritmos de ordenação
+- [ ] Algoritmos de busca
+
+*(atualize os checkboxes conforme o conteúdo avança)*
+
+## 📁 Outras pastas
+
+- `estruturas` — implementações gerais reaproveitáveis de estruturas de dados
+
+## 🛠️ Tecnologias
+
+- **Linguagem:** C
+- **Compilador:** GCC *(ajuste se usar outro)*
+
+## ▶️ Como rodar um exercício
+
+```bash
+git clone https://github.com/KINDERzin/Estrutura-de-dados.git
+cd Estrutura-de-dados/<pasta-da-data>
+gcc arquivo.c -o programa
+./programa
+```
+
+## 👤 Autor
+
+[**Erick Matheus Frias**](https://github.com/KINDERzin) — estudante de Ciência da Computação (UNESPAR)
+
+---
+
+*Repositório atualizado semanalmente conforme o andamento da disciplina.*
