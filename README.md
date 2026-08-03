@@ -24,8 +24,6 @@ Este repositório é atualizado **semanalmente** com o conteúdo, exercícios e 
 | [07.02](./07.02) | Exercícios corrigidos | ✅ |
 | `mm.dd` | *(próxima aula)* | 🔜 |
 
-> 💡 Toda semana: cria a pasta com a data (`mm.dd`), adiciona o código e inclui uma linha nova nessa tabela.
-
 ## ✅ Tópicos cobertos até aqui
 
 - [x] Listas encadeadas
@@ -36,8 +34,6 @@ Este repositório é atualizado **semanalmente** com o conteúdo, exercícios e 
 - [ ] Grafos
 - [ ] Algoritmos de ordenação
 - [ ] Algoritmos de busca
-
-*(atualize os checkboxes conforme o conteúdo avança)*
 
 ## 📁 Outras pastas
 
