@@ -2,7 +2,7 @@
 
 > Repositório de acompanhamento semanal da disciplina de **Estrutura de Dados** — Ciência da Computação (UNESPAR, Apucarana/PR).
 
-![Última atualização](https://img.shields.io/badge/última%20atualização-07.02-blue)
+![Última atualização](https://img.shields.io/badge/última%20atualização-08.07-blue)
 ![Linguagem](https://img.shields.io/badge/linguagem-C-informational)
 
 ## 🔄 Sobre este repositório
@@ -10,39 +10,43 @@
 Este repositório é atualizado **semanalmente** com o conteúdo, exercícios e trabalhos vistos em aula. A ideia é manter um histórico organizado da evolução ao longo do semestre.
 
 ## 🗓️ Log semanal
+Aula as quintas-feiras
 
 | Data | Aula / Conteúdo | Status |
 |------|------------------|--------|
 | [03.12](./03.12) | Introdução / aula do dia | ✅ |
 | [04.16](./04.16) | Aula do dia | ✅ |
 | [04.23](./04.23) | Aula do dia | ✅ |
-| [05.07 - trabalho](./05.07%20-%20trabalho) | Trabalho avaliativo | ✅ |
+| [05.07](./05.07%20-%20trabalho) | Trabalho avaliativo | ✅ |
 | [05.21](./05.21) | Aula do dia | ✅ |
 | [05.28](./05.28) | Aula do dia | ✅ |
 | [06.18](./06.18) | Aula do dia | ✅ |
 | [06.25](./06.25) | Exercícios corrigidos | ✅ |
 | [07.02](./07.02) | Exercícios corrigidos | ✅ |
-| `mm.dd` | *(próxima aula)* | 🔜 |
+| 08.06 | Aula em sala | ✅ |
+| `08.13` | *(próxima aula)* | 🔜 |
 
 ## ✅ Tópicos cobertos até aqui
 
 - [x] Listas encadeadas
 - [x] Pilhas
 - [x] Filas
-- [ ] Árvores binárias
-- [ ] Árvores AVL
-- [ ] Grafos
+- [ ] Árvore binárias
+- [ ] Árvore AVL
+- [ ] Árvores B
+- [ ] Pesquisa sequencial
 - [ ] Algoritmos de ordenação
 - [ ] Algoritmos de busca
+- [ ] Tabela Hash
 
 ## 📁 Outras pastas
 
-- `estruturas` — implementações gerais reaproveitáveis de estruturas de dados
+- `estruturas` — código base de cada estrutura estudada
 
 ## 🛠️ Tecnologias
 
 - **Linguagem:** C
-- **Compilador:** GCC *(ajuste se usar outro)*
+- **Compilador:** GCC
 
 ## ▶️ Como rodar um exercício
 
