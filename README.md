@@ -2,7 +2,7 @@
 
 > Repositório de acompanhamento semanal da disciplina de **Estrutura de Dados** — Ciência da Computação (UNESPAR, Apucarana/PR).
 
-![Última atualização](https://img.shields.io/badge/última%20atualização-08.07-blue)
+![Última atualização](https://img.shields.io/badge/última%20atualização-08.13-blue)
 ![Linguagem](https://img.shields.io/badge/linguagem-C-informational)
 
 ## 🔄 Sobre este repositório
@@ -24,7 +24,8 @@ Aula as quintas-feiras
 | [06.25](./06.25) | Exercícios corrigidos | ✅ |
 | [07.02](./07.02) | Exercícios corrigidos | ✅ |
 | 08.06 | Aula em sala | ✅ |
-| `08.13` | *(próxima aula)* | 🔜 |
+| 08.13 | Primeiros exercícios | ✅ |
+| `08.20` | *(próxima aula)* | 🔜 |
 
 ## ✅ Tópicos cobertos até aqui
 
